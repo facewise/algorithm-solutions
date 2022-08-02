@@ -1,13 +1,13 @@
 package main;
 
-import solution.level2.maxnumber.Solution;
+import solution.level2.openchattingroom.Solution;
+
+import java.util.Arrays;
 
 public class Main {
-
     public static void main(String[] args) {
         Solution solution = new Solution();
-
-        int[] numbers = new int[] {6, 10, 2};
-        System.out.println(solution.solution(numbers));
+        String[] list = {"Enter uid1234 Muzi", "Enter uid4567 Prodo","Leave uid1234","Enter uid1234 Prodo","Change uid4567 Ryan"};
+        System.out.println(Arrays.toString(solution.solution(list)));
     }
 }
