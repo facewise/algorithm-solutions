@@ -9,7 +9,7 @@ fun main() {
 
     val size = br.readLine()?.trim()?.toInt() ?: return
 
-    val queue = Queue(size)
+    val stack = Stack(size)
     val list = Array(size + 1) { ArrayList<Int>() }
     val parent = IntArray(size + 1)
 
@@ -21,13 +21,13 @@ fun main() {
         list[m].add(n)
     }
 
-    queue.push(1)
-    while (queue.isNotEmpty()) {
-        val n = queue.poll()
+    stack.push(1)
+    while (stack.isNotEmpty()) {
+        val n = stack.pop()
         for (i in list[n]) {
             if (parent[i] != 0)
                 continue
-            queue.push(i)
+            stack.push(i)
             parent[i] = n
         }
     }
@@ -39,24 +39,15 @@ fun main() {
     bw.flush()
 }
 
-class Queue(size: Int) {
-    private val array = IntArray(size)
-    private var front = 0
-    private var rear = 0
+class Stack(size: Int) {
+    val array = IntArray(size)
+    var p = -1
 
     fun push(el: Int) {
-        if (rear + 1 == array.size) {
-            rear = -1
-        }
-        array[++rear] = el
+        array[++p] = el
     }
 
-    fun poll(): Int {
-        if (front + 1 == array.size) {
-            front = -1
-        }
-        return array[++front]
-    }
+    fun pop() = array[p--]
 
-    fun isNotEmpty(): Boolean = front != rear
+    fun isNotEmpty(): Boolean = p != -1
 }
