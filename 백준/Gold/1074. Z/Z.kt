@@ -14,7 +14,7 @@ fun main() {
 
     while (size > 1) {
         val half = size.shr(1)
-        val adder = 1.shl(2 * n - 2)
+        val adder = half * half
         if (r >= half) {
             answer += adder.shl(1)
             r -= half
